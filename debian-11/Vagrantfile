@@ -1,3 +1,16 @@
+disk = './HDD.vdi'
+disk_size_gb = 1
+
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/bullseye64"
+    config.vm.provider "virtualbox" do |vb|
+        vb.gui = false
+        vb.memory = "1536"
+        vb.cpus = 1
+        unless File.exist?(disk)
+            vb.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', disk_size_gb * 1024]
+        end
+        vb.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+    end
+
 end
