@@ -3,5 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/hirsute64"
   config.vm.define "ubuntu-20.04"
   config.vm.hostname = "ubuntu-20.04"
-  config.vm.synced_folder HOST_PROJECT, HOST_PROJECT
+  if (HOST_PROJECT)
+    config.vm.synced_folder HOST_PROJECT, HOST_PROJECT
+  end
 end
