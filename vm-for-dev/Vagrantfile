@@ -1,7 +1,7 @@
 HOST_PROJECT = ENV['PROJECT_PATH']
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/bullseye64"
-  config.vm.define "debian11"
-  config.vm.hostname = "debian11"
+  config.vm.box = "ubuntu/hirsute64"
+  config.vm.define "ubuntu-20.04"
+  config.vm.hostname = "ubuntu-20.04"
   config.vm.synced_folder HOST_PROJECT, HOST_PROJECT
 end
